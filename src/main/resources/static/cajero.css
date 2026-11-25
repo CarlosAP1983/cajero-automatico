@@ -1,0 +1,805 @@
+/* =====================================================
+   1. PALETA Y ESTILOS GENERALES
+   ===================================================== */
+
+:root {
+    color-scheme: dark;
+
+    --marino: #091b31;
+    --azul: #206fa8;
+    --hielo: #edf5fc;
+    --texto-suave: #adc5da;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 25%,
+            #183a56,
+            #081421 75%
+        );
+
+    color: var(--hielo);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+button:focus-visible {
+    outline: 3px solid #bce8ff;
+    outline-offset: 4px;
+}
+
+button:disabled {
+    cursor: default;
+}
+
+.experiencia {
+    width: min(960px, 100%);
+    margin: auto;
+    padding: 36px 24px;
+}
+
+.encabezado {
+    margin-bottom: 25px;
+}
+
+.sobre-titulo {
+    color: #91c6ed;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+h1 {
+    margin: 10px 0;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+.encabezado > p:last-child {
+    margin: 0;
+    color: var(--texto-suave);
+}
+
+
+/* =====================================================
+   2. CARCASA AZUL METÁLICA
+   ===================================================== */
+
+.cajero {
+    padding: 26px;
+
+    border: 1px solid #7595b2;
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            125deg,
+            #527c9e 0%,
+            #244d6f 17%,
+            #153650 51%,
+            #345e7d 78%,
+            #122c43 100%
+        );
+
+    box-shadow:
+        inset 0 2px 1px #c4e0f075,
+        inset 0 -3px 5px #020d1b,
+        0 30px 70px #0007;
+}
+
+.marca {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+
+    padding: 0 4px 24px;
+
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.nombre-banco {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.marca-light {
+    font-weight: 300;
+}
+
+.simbolo {
+    display: inline-grid;
+    place-items: center;
+
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid #9bcae9;
+    border-radius: 9px;
+
+    background: #97c5e122;
+}
+
+.terminal {
+    color: #c5dded;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.terminal i {
+    display: inline-block;
+
+    width: 6px;
+    height: 6px;
+    margin-left: 8px;
+
+    border-radius: 50%;
+    background: #8be7cf;
+
+    box-shadow: 0 0 9px #8be7cf;
+}
+
+.panel-superior,
+.panel-inferior {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 190px;
+    gap: 25px;
+}
+
+.panel-inferior {
+    margin-top: 25px;
+}
+
+
+/* =====================================================
+   3. PANTALLA
+   ===================================================== */
+
+.marco-pantalla {
+    padding: 12px;
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0b1927,
+            #386181
+        );
+
+    box-shadow:
+        inset 0 3px 7px #0009,
+        0 1px #b8d1e15e;
+}
+
+.pantalla {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 300px;
+    overflow: hidden;
+
+    border: 1px solid #4d81a0;
+    border-radius: 7px;
+
+    background:
+        radial-gradient(
+            ellipse at top,
+            #163f61,
+            #081e33
+        );
+}
+
+.barra-pantalla,
+.pie-pantalla {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 13px 17px;
+
+    color: #9cc0dc;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.barra-pantalla {
+    border-bottom: 1px solid #91bee023;
+}
+
+.pie-pantalla {
+    border-top: 1px solid #91bee023;
+}
+
+.contenido {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 23px 15px;
+
+    text-align: center;
+}
+
+.contenido h2 {
+    margin: 10px 0;
+
+    font-size: clamp(19px, 3vw, 26px);
+    font-weight: 500;
+}
+
+.contenido p {
+    max-width: 350px;
+    margin: 5px 0;
+
+    color: #bad4e8;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.icono-pantalla {
+    color: #88d1ff;
+    font-size: 32px;
+}
+
+.contenido .mensaje {
+    min-height: 20px;
+
+    color: #ffe1a3;
+    font-size: 12px;
+}
+
+/* Casillas donde se muestran puntos en lugar del PIN. */
+.pin {
+    display: flex;
+    gap: 12px;
+
+    margin: 18px 0 6px;
+}
+
+.pin span {
+    display: grid;
+    place-items: center;
+
+    width: 35px;
+    height: 42px;
+
+    border: 1px solid #5886a5;
+    border-radius: 6px;
+
+    background: #04132366;
+
+    color: #e0f6ff;
+    font-size: 22px;
+}
+
+/* Indicador de lectura de tarjeta. */
+.spinner {
+    width: 32px;
+    height: 32px;
+
+    border: 3px solid #70b8e52a;
+    border-top-color: #9addff;
+    border-radius: 50%;
+
+    animation: girar 1s linear infinite;
+}
+
+@keyframes girar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =====================================================
+   4. LECTOR Y TARJETA
+   ===================================================== */
+
+.lector {
+    padding-top: 8px;
+    text-align: center;
+}
+
+.etiqueta {
+    margin: 0 0 13px;
+
+    color: #d1e4f2;
+    font-size: 10px;
+    letter-spacing: 1.6px;
+}
+
+.ranura-tarjeta {
+    position: relative;
+
+    height: 15px;
+
+    border: 3px solid #64819a;
+    border-radius: 5px;
+
+    background: #030d18;
+
+    box-shadow: 0 1px 0 #a9d1e773;
+}
+
+/* Luz situada sobre la ranura. */
+.ranura-tarjeta span {
+    position: absolute;
+    top: -9px;
+    left: 20%;
+
+    width: 60%;
+    height: 3px;
+
+    border-radius: 3px;
+
+    background: #7295ad;
+}
+
+.ranura-tarjeta span.activa {
+    background: #93dbff;
+    box-shadow: 0 0 12px #59bbff;
+
+    animation: luz 1s ease-in-out infinite alternate;
+}
+
+@keyframes luz {
+    to {
+        opacity: 0.5;
+    }
+}
+
+/*
+   El recorte de esta zona hace que la tarjeta desaparezca
+   progresivamente al desplazarse hacia arriba.
+*/
+.zona-tarjeta {
+    height: 137px;
+    overflow: hidden;
+
+    padding: 16px 6px 0;
+}
+
+.tarjeta {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 100%;
+    height: 108px;
+    padding: 13px;
+
+    border: 1px solid #9cc2de;
+    border-radius: 11px;
+
+    color: #edf7ff;
+
+    background:
+        linear-gradient(
+            125deg,
+            #5b91b6,
+            #163d62 52%,
+            #2b6592
+        );
+
+    box-shadow:
+        inset 0 1px #e0f2ff88,
+        0 6px 10px #0004;
+
+    transition:
+        transform 1.2s ease-in-out,
+        opacity 0.9s;
+}
+
+/* Reflejo sobre la tarjeta. */
+.tarjeta::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 20%,
+            #d7f1ff18 21%,
+            transparent 65%
+        );
+
+    pointer-events: none;
+}
+
+/* JavaScript agrega esta clase al insertar la tarjeta. */
+.tarjeta.dentro {
+    transform: translateY(-145px);
+    opacity: 0;
+}
+
+.tarjeta-marca {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.chip {
+    width: 25px;
+    height: 20px;
+
+    margin: 9px 0;
+
+    border: 1px solid #bfa66d;
+    border-radius: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 45%,
+            #99864d 48%,
+            transparent 51%
+        ),
+        linear-gradient(
+            #e9d9a6 45%,
+            #99864d 49%,
+            #dfca8e 53%
+        );
+}
+
+.tarjeta-numero {
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.tarjeta-titular {
+    margin-top: 6px;
+
+    font-size: 7px;
+    letter-spacing: 1px;
+}
+
+.tarjeta-flecha {
+    position: absolute;
+    top: 40px;
+    right: 13px;
+
+    color: #c5e9ff;
+    font-size: 24px;
+}
+
+.ayuda-tarjeta {
+    margin: 8px 0 0;
+
+    color: #c3d9e8;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   5. TECLADO Y BOTONES
+   ===================================================== */
+
+.teclado-panel {
+    padding: 18px;
+
+    border: 1px solid #85acc342;
+    border-radius: 14px;
+
+    background: #06162655;
+}
+
+.teclado {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.numeros {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.numeros button {
+    min-height: 43px;
+
+    border: 1px solid #a4bacb;
+    border-radius: 6px;
+
+    background: linear-gradient(#f1f6fa, #b0c2cf);
+
+    color: #16314b;
+    font-size: 19px;
+    font-weight: 600;
+
+    box-shadow:
+        inset 0 1px #fff,
+        0 3px 0 #142a3e;
+}
+
+.acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.acciones button {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+
+    padding: 8px 12px;
+
+    border: 1px solid #ffffff55;
+    border-radius: 6px;
+
+    color: #142c40;
+    font-size: 12px;
+    font-weight: 700;
+
+    box-shadow:
+        inset 0 1px #ffffff88,
+        0 3px #0a1f32;
+}
+
+.cancelar {
+    background: linear-gradient(#f3a49d, #d77e7d);
+}
+
+.borrar {
+    background: linear-gradient(#f1df97, #d4b75e);
+}
+
+.aceptar {
+    background: linear-gradient(#9addc7, #60bda1);
+}
+
+/* Simula el relieve al presionar una tecla. */
+.teclado button:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: inset 0 2px 4px #0003;
+}
+
+.teclado button:disabled {
+    opacity: 0.45;
+}
+
+
+/* =====================================================
+   6. DISPENSADOR Y PIE DEL CAJERO
+   ===================================================== */
+
+.dispensador {
+    padding: 20px 5px;
+    text-align: center;
+}
+
+.ranura-efectivo {
+    height: 29px;
+
+    border: 5px solid #64839c;
+    border-radius: 5px;
+
+    background: linear-gradient(#020911, #162c3c);
+
+    box-shadow: 0 2px #b0d0e044;
+}
+
+.dispensador > p:last-child {
+    color: #b4cddd;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.pie-cajero {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+
+    margin-top: 24px;
+
+    color: #a9c6da;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   7. GUÍA DIDÁCTICA
+   ===================================================== */
+
+.guia {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+
+    margin-top: 24px;
+    padding: 18px 22px;
+
+    border: 1px solid #476c874d;
+    border-radius: 14px;
+
+    background: #152b3e80;
+}
+
+.guia .sobre-titulo {
+    margin: 0 0 8px;
+}
+
+#explicacion {
+    margin: 0;
+
+    color: #bad0e0;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.pasos {
+    display: flex;
+    flex-shrink: 0;
+    gap: 18px;
+
+    padding: 0;
+
+    list-style: none;
+    counter-reset: paso;
+}
+
+.pasos li {
+    counter-increment: paso;
+
+    color: #829aad;
+    font-size: 10px;
+    text-align: center;
+}
+
+.pasos li::before {
+    content: counter(paso);
+
+    display: grid;
+    place-items: center;
+
+    width: 24px;
+    height: 24px;
+
+    margin: 0 auto 8px;
+
+    border: 1px solid #476279;
+    border-radius: 50%;
+}
+
+.pasos li.actual {
+    color: #d7f0ff;
+}
+
+.pasos li.actual::before {
+    border-color: #97d9ff;
+
+    background: #327ba6;
+
+    box-shadow: 0 0 15px #67c4ff33;
+}
+
+.nota {
+    color: #91a9bc;
+    font-size: 11px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+
+/* =====================================================
+   8. ADAPTACIÓN A PANTALLAS PEQUEÑAS
+   ===================================================== */
+
+@media (max-width: 700px) {
+    .experiencia {
+        padding: 24px 12px;
+    }
+
+    .cajero {
+        padding: 18px 12px;
+    }
+
+    .panel-superior,
+    .panel-inferior {
+        grid-template-columns: minmax(0, 1fr) 140px;
+        gap: 12px;
+    }
+
+    .marco-pantalla {
+        padding: 7px;
+    }
+
+    .teclado-panel {
+        padding: 12px;
+    }
+
+    .teclado {
+        gap: 10px;
+    }
+
+    .guia {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .pasos {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .tarjeta {
+        padding: 10px;
+    }
+
+    .tarjeta-numero {
+        font-size: 8px;
+        letter-spacing: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .panel-superior,
+    .panel-inferior {
+        grid-template-columns: 1fr;
+    }
+
+    .lector {
+        width: 180px;
+        margin: auto;
+    }
+
+    .zona-tarjeta {
+        height: 130px;
+    }
+
+    .ayuda-tarjeta {
+        margin-top: 0;
+    }
+
+    .dispensador {
+        padding: 5px 25px;
+    }
+
+    .marca {
+        font-size: 12px;
+    }
+
+    .pie-cajero {
+        font-size: 8px;
+    }
+}
+
+
+/* Respeta la preferencia de movimiento reducido del sistema. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

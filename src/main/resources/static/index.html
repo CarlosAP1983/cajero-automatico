@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Cajero automático · Simulador</title>
+
+    <!-- Diseño del cajero -->
+    <link rel="stylesheet" href="cajero.css">
+
+    <!-- Interacción y animaciones -->
+    <script src="cajero.js" defer></script>
+</head>
+
+<body>
+    <main class="experiencia">
+
+        <header class="encabezado">
+            <p class="sobre-titulo">LABORATORIO JAVA / 01</p>
+
+            <h1>Tu banco, paso a paso.</h1>
+
+            <p>
+                Explora cómo funciona un cajero automático.
+            </p>
+        </header>
+
+        <section
+            class="cajero"
+            aria-label="Cajero automático simulado"
+        >
+            <!-- Identificación del cajero -->
+            <header class="marca">
+                <div class="nombre-banco">
+                    <span class="simbolo" aria-hidden="true">
+                        C
+                    </span>
+
+                    <span>
+                        CARLOS<span class="marca-light">BANK</span>
+                    </span>
+                </div>
+
+                <span class="terminal">
+                    ATM 001
+                    <i aria-hidden="true"></i>
+                </span>
+            </header>
+
+            <div class="panel-superior">
+
+                <!-- Pantalla principal -->
+                <section
+                    class="marco-pantalla"
+                    aria-label="Pantalla del cajero"
+                >
+                    <div class="pantalla">
+
+                        <div class="barra-pantalla">
+                            <span>BIENVENIDO</span>
+                            <span id="reloj"></span>
+                        </div>
+
+                        <!-- JavaScript actualiza el contenido de esta zona -->
+                        <div
+                            class="contenido"
+                            id="contenido"
+                            aria-live="polite"
+                            aria-atomic="true"
+                        ></div>
+
+                        <div class="pie-pantalla">
+                            <span>CONEXIÓN LOCAL</span>
+                            <span>SIMULADOR</span>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Lector y tarjeta ficticia -->
+                <aside
+                    class="lector"
+                    aria-label="Lector de tarjeta"
+                >
+                    <p class="etiqueta">TARJETA</p>
+
+                    <div class="ranura-tarjeta">
+                        <span id="luzLector"></span>
+                    </div>
+
+                    <div class="zona-tarjeta">
+                        <button
+                            class="tarjeta"
+                            id="tarjeta"
+                            type="button"
+                            aria-label="Insertar tarjeta ficticia"
+                        >
+                            <span class="tarjeta-marca">
+                                CARLOS BANK
+                            </span>
+
+                            <span
+                                class="chip"
+                                aria-hidden="true"
+                            ></span>
+
+                            <span class="tarjeta-numero">
+                                •••• &nbsp; •••• &nbsp; •••• &nbsp; 0001
+                            </span>
+
+                            <span class="tarjeta-titular">
+                                TARJETA DE PRUEBA
+                            </span>
+
+                            <span
+                                class="tarjeta-flecha"
+                                aria-hidden="true"
+                            >
+                                ↑
+                            </span>
+                        </button>
+                    </div>
+
+                    <p
+                        class="ayuda-tarjeta"
+                        id="ayudaTarjeta"
+                    >
+                        Pulsa la tarjeta<br>
+                        para insertarla
+                    </p>
+                </aside>
+
+            </div>
+
+            <div class="panel-inferior">
+
+                <!-- Teclado numérico y botones de acción -->
+                <section
+                    class="teclado-panel"
+                    aria-label="Teclado del cajero"
+                >
+                    <p class="etiqueta">
+                        TECLADO NUMÉRICO
+                    </p>
+
+                    <div class="teclado">
+
+                        <div class="numeros">
+                            <button type="button" data-numero="1">1</button>
+                            <button type="button" data-numero="2">2</button>
+                            <button type="button" data-numero="3">3</button>
+
+                            <button type="button" data-numero="4">4</button>
+                            <button type="button" data-numero="5">5</button>
+                            <button type="button" data-numero="6">6</button>
+
+                            <button type="button" data-numero="7">7</button>
+                            <button type="button" data-numero="8">8</button>
+                            <button type="button" data-numero="9">9</button>
+
+                            <span></span>
+                            <button type="button" data-numero="0">0</button>
+                            <span></span>
+                        </div>
+
+                        <div class="acciones">
+
+                            <button
+                                class="cancelar"
+                                id="cancelar"
+                                type="button"
+                            >
+                                Cancelar
+                                <span aria-hidden="true">×</span>
+                            </button>
+
+                            <button
+                                class="borrar"
+                                id="borrar"
+                                type="button"
+                            >
+                                Corregir
+                                <span aria-hidden="true">←</span>
+                            </button>
+
+                            <button
+                                class="aceptar"
+                                id="aceptar"
+                                type="button"
+                            >
+                                Aceptar
+                                <span aria-hidden="true">↵</span>
+                            </button>
+
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Decorativo por ahora -->
+                <section
+                    class="dispensador"
+                    aria-label="Dispensador de efectivo, aún no disponible"
+                >
+                    <p class="etiqueta">EFECTIVO</p>
+
+                    <div class="ranura-efectivo"></div>
+
+                    <p>
+                        Fondos ficticios<br>
+                        Operaciones próximamente
+                    </p>
+                </section>
+
+            </div>
+
+            <footer class="pie-cajero">
+                <span>PRACTICA JAVA</span>
+                <span>JAVA + SPRING BOOT</span>
+            </footer>
+        </section>
+
+        <!-- Explica lo que ocurre en cada paso -->
+        <aside
+            class="guia"
+            aria-label="Guía de la simulación"
+        >
+            <div>
+                <p class="sobre-titulo">ASÍ FUNCIONA</p>
+
+                <p
+                    id="explicacion"
+                    aria-live="polite"
+                ></p>
+            </div>
+
+            <ol class="pasos" id="pasos">
+                <li>Insertar</li>
+                <li>Leer</li>
+                <li>Ingresar PIN</li>
+                <li>Continuar</li>
+            </ol>
+        </aside>
+
+        <p class="nota">
+            Usa únicamente un PIN ficticio. Esta vista todavía no
+            autentica usuarios ni realiza operaciones bancarias.
+        </p>
+
+    </main>
+</body>
+</html>
